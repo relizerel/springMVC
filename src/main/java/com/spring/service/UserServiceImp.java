@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("userServiceImpl")
+@Service("userServiceImp")
 public class UserServiceImp implements UserService{
 
     private final UserDao userDao;

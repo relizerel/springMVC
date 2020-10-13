@@ -9,23 +9,24 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 import java.util.List;
 
 
 @Controller
 public class UsersController {
 
+    @Autowired
     private UserService userService;
 
     public UsersController(){}
 
-    @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
 
 
-    @GetMapping(value = "/users")
+    @GetMapping(value = "/users/")
     public ModelAndView index(){
         List<User> listUsers = userService.listAll();
         ModelAndView modelAndView = new ModelAndView("users/index");
