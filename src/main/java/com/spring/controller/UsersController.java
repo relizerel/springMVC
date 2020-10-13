@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -18,18 +15,18 @@ import java.util.List;
 @Controller
 public class UsersController {
 
-    @Autowired
     private UserService userService;
 
     public UsersController(){}
 
+    @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
 
 
     @GetMapping(value = "/users")
-    public ModelAndView index(User user){
+    public ModelAndView index(){
         List<User> listUsers = userService.listAll();
         ModelAndView modelAndView = new ModelAndView("users/index");
         modelAndView.addObject("allUsers", listUsers);
