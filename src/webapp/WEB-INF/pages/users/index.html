@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User page</title>
+</head>
+<body>
+<a th:href="${'/users/save'}" class="btn btn-danger">New User</a>
+<div class="container">
+    <!-- th:if="${not #lists.isEmpty(listUsers)}-->
+    <div>
+        <h2>All users</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>New User</th>
+            </tr>
+            <!--/*@thymesVar id="user" type="com.spring.model.User"*/-->
+            <tr th:each="user : ${allUsers}">
+                <td th:text="${user.id}">Id</td>
+                <td th:text="${user.name}">Name</td>
+                <td><a th:href="${'/users/update/' + user.id}" class="btn btn-default">Edit</a></td>
+                <td><a th:href="${'/users/delete/' + user.id}" class="btn btn-danger">Delete</a></td>
+                <td><a th:href="${'/users/save'}" class="btn btn-danger">New User</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

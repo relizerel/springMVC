@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Service("userServiceImpl")
 public class UserServiceImp implements UserService{
@@ -39,5 +40,10 @@ public class UserServiceImp implements UserService{
     @Override
     public User deleteUser(User user) {
         return userDao.deleteUser(user);
+    }
+
+    @Override
+    public List<User> listAll() {
+        return userDao.listAll();
     }
 }
