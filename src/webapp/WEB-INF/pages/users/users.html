@@ -14,15 +14,22 @@
         <table class="table table-striped">
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>eMail</th>
+                <th>Telephone</th>
                 <th>Edit</th>
                 <th>Delete</th>
                 <th>New User</th>
             </tr>
             <!--/*@thymesVar id="user" type="com.spring.model.User"*/-->
+            <!--/*@thymesVar id="allUsers" type="com.spring.controller.UsersController"*/-->
             <tr th:each="user : ${allUsers}">
                 <td th:text="${user.id}">Id</td>
-                <td th:text="${user.name}">Name</td>
+                <td th:text="${user.firstName}">First Name</td>
+                <td th:text="${user.lastName}">Last Name</td>
+                <td th:text="${user.email}">eMail</td>
+                <td th:text="${user.telephone}">Telephone</td>
                 <td><a th:href="${'/users/update/' + user.id}" class="btn btn-default">Edit</a></td>
                 <td><a th:href="${'/users/delete/' + user.id}" class="btn btn-danger">Delete</a></td>
                 <td><a th:href="${'/users/save'}" class="btn btn-danger">New User</a></td>

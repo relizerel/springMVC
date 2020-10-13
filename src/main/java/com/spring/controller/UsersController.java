@@ -28,22 +28,22 @@ public class UsersController {
 
     @GetMapping(value = "/users/")
     public ModelAndView index(){
-        List<User> listUsers = userService.listAll();
-        ModelAndView modelAndView = new ModelAndView("users/index");
+        List<User> listUsers = userService.listUsers();
+        ModelAndView modelAndView = new ModelAndView("users/users");
         modelAndView.addObject("allUsers", listUsers);
         return modelAndView;
     }
 
     @GetMapping(value = "/users/save")
     public ModelAndView saveUser() {
-        ModelAndView modelAndView = new ModelAndView("users/save");
+        ModelAndView modelAndView = new ModelAndView("redirect:/users/");
         modelAndView.addObject("saveUser", userService.saveUser(new User()));
         return modelAndView;
     }
 
     @GetMapping(value = "/users/update/{id}")
     public ModelAndView updateUser(@PathVariable long id) {
-        ModelAndView modelAndView = new ModelAndView("users/update");
+        ModelAndView modelAndView = new ModelAndView("redirect:/users/");
         User user = userService.getUser(id);
         modelAndView.addObject("updateUser", userService.updateUser(user));
         return modelAndView;
@@ -51,7 +51,7 @@ public class UsersController {
 
     @GetMapping(value = "/users/delete/{id}")
     public ModelAndView deleteUser(@PathVariable long id) {
-        ModelAndView modelAndView = new ModelAndView("users/delete");
+        ModelAndView modelAndView = new ModelAndView("redirect:/users/");
         User user = userService.getUser(id);
         modelAndView.addObject("deleteUser", userService.deleteUser(user));
         return modelAndView;

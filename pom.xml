@@ -109,7 +109,17 @@
       <version>${mysql.version}</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
 
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -163,7 +173,7 @@
           <version>2.4</version>
           <configuration>
             <warSourceDirectory>src/webapp</warSourceDirectory>
-            <warName>spring_mvc</warName>
+            <warName>spring_security</warName>
             <failOnMissingWebXml>false</failOnMissingWebXml>
           </configuration>
         </plugin>

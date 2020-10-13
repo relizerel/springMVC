@@ -12,6 +12,6 @@ public interface UserDao {
     User saveUser(User user);
     User updateUser(User user);
     User deleteUser(User user);
-    List<User> listAll();
+    List<User> listUsers();
 }
 

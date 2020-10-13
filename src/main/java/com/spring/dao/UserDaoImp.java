@@ -24,9 +24,8 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public List<User> listAll() {
-        Query query = entityManger.createQuery("SELECT users FROM User users");
-        return (List<User>) query.getResultList();
+    public List<User> listUsers() {
+        return (List<User>) entityManger.createQuery("SELECT users FROM User users").getResultList();
     }
 
     @Override
@@ -48,7 +47,6 @@ public class UserDaoImp implements UserDao {
         } else {
             entityManger.remove(entityManger.merge(user));
         }
-
         return user;
     }
 }
