@@ -1,41 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User page</title>
-</head>
-<body>
-<a href="/users/save" class="btn btn-danger">New User</a>
-<div class="container">
-    <!-- th:if="${not #lists.isEmpty(listUsers)}-->
-    <div>
-        <h2>All users</h2>
-        <table class="table table-striped">
-            <tr>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>eMail</th>
-                <th>Telephone</th>
-                <th>Edit</th>
-                <th>Delete</th>
-                <th>New User</th>
-            </tr>
-            <!--/*@thymesVar id="user" type="com.spring.model.User"*/-->
-            <!--/*@thymesVar id="allUsers" type="com.spring.controller.UsersController"*/-->
-            <tr th:each="user : ${allUsers}">
-                <td th:text="${user.id}">Id</td>
-                <td th:text="${user.firstName}">First Name</td>
-                <td th:text="${user.lastName}">Last Name</td>
-                <td th:text="${user.email}">eMail</td>
-                <td th:text="${user.telephone}">Telephone</td>
-                <td><a th:href="${'/users/update/' + user.id}" class="btn btn-default">Edit</a></td>
-                <td><a th:href="${'/users/delete/' + user.id}" class="btn btn-danger">Delete</a></td>
-                <td><a th:href="${'/users/save'}" class="btn btn-danger">New User</a></td>
-            </tr>
-        </table>
-    </div>
-</div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>User page</title>
+    </head>
+    <body>
+        <div>
+            <!-- th:if="${not #lists.isEmpty(listUsers)}-->
+            <div>
+                <h2>All users</h2>
+                <table border="1">
+                    <tr>
+                        <th>Id</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>eMail</th>
+                        <th>Telephone</th>
+                        <th>Get user</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr th:each="user : ${allUsers}">
+                        <td th:text="${user.id}">Id</td>
+                        <td th:text="${user.firstName}">First Name</td>
+                        <td th:text="${user.lastName}">Last Name</td>
+                        <td th:text="${user.email}">eMail</td>
+                        <td th:text="${user.telephone}">Telephone</td>
+                        <td><a th:href="${'/users/get/' + user.id}">Get user</a></td>
+                        <td><a th:href="${'/users/delete/' + user.id}">Delete</a></td>
+                    </tr>
+                </table>
+                <a href="/users/save">New User</a>
+            </div>
+        </div>
+    </body>
 </html>

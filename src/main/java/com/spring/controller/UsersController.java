@@ -16,17 +16,16 @@ import java.util.List;
 @Controller
 public class UsersController {
 
-    @Autowired
     private UserService userService;
 
     public UsersController(){}
 
+    @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
 
-
-    @GetMapping(value = "/users/")
+    @GetMapping(value = "users/")
     public ModelAndView index(){
         List<User> listUsers = userService.listUsers();
         ModelAndView modelAndView = new ModelAndView("users/users");
@@ -35,35 +34,39 @@ public class UsersController {
     }
 
     @GetMapping(value = "/users/save")
-    public ModelAndView saveUser() {
-        ModelAndView modelAndView = new ModelAndView("redirect:/users/");
-        modelAndView.addObject("saveUser", userService.saveUser(new User()));
-        return modelAndView;
+    public String saveUser() {
+        userService.saveUser(new User());
+        return "redirect:/users/";
     }
 
-    @GetMapping(value = "/users/update/{id}")
-    public ModelAndView updateUser(@PathVariable long id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/users/");
-        User user = userService.getUser(id);
-        modelAndView.addObject("updateUser", userService.updateUser(user));
-        return modelAndView;
+    @PostMapping(value = "/users/update/{id}")
+    public String updateUser(@PathVariable long id, User user) {
+        user.setId(id);
+        userService.updateUser(user);
+        return "redirect:/users/";
     }
 
     @GetMapping(value = "/users/delete/{id}")
-    public ModelAndView deleteUser(@PathVariable long id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/users/");
+    public String deleteUser(@PathVariable long id) {
         User user = userService.getUser(id);
-        modelAndView.addObject("deleteUser", userService.deleteUser(user));
-        return modelAndView;
+        userService.deleteUser(user);
+        return "redirect:/users/";
     }
 
-    @GetMapping(value = "/users/find/{id}")
+    @GetMapping(value = "/users/get/{id}")
     public ModelAndView getUser(@PathVariable long id) {
-        ModelAndView modelAndView = new ModelAndView("users/find");
+        ModelAndView modelAndView = new ModelAndView("users/get");
         modelAndView.addObject("getUser", userService.getUser(id));
         return modelAndView;
     }
 
+    // Тут начинается настройка Security
+
+
+
+
+
+    // Тут начинается куча мусора, можно удалить, но что-то может потом пригодиться
 
 /*
     @GetMapping(value = "/save")

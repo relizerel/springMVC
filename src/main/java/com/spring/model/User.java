@@ -22,8 +22,7 @@ public class User {
     @Column(name = "telephone")
     private String telephone;
 
-    public User(Long id, String firstName, String lastName, String email, String telephone) {
-        this.id = id;
+    public User(String firstName, String lastName, String email, String telephone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -31,7 +30,6 @@ public class User {
     }
 
     public User() {
-
     }
 
     public Long getId() {
@@ -64,6 +62,7 @@ public class User {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
     @Override
     public String toString() {
         return "models.User{" +
